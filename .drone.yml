@@ -2,7 +2,8 @@ pipeline:
   scp:
     image: appleboy/drone-scp
     pull: true
-    host: [ tomasserver ]
+    host: 
+      - 139.162.9.68
     port: 22
     username: root
     user: root
@@ -15,7 +16,8 @@ pipeline:
 
   ssh:
     image: appleboy/drone-ssh
-    host: [ tomasserver ]
+    host: 
+      - 139.162.9.68
     username: root
     user: root
     secrets: [ ssh_password ]

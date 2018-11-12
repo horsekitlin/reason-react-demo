@@ -2,8 +2,7 @@ pipeline:
   scp:
     image: appleboy/drone-scp
     pull: true
-    host: 
-      - 139.162.9.68
+    host: [ tomasserver ]
     port: 22
     username: root
     user: root
@@ -16,8 +15,7 @@ pipeline:
 
   ssh:
     image: appleboy/drone-ssh
-    host: 
-      - 139.162.9.68
+    host: [ tomasserver ]
     username: root
     user: root
     secrets: [ ssh_password ]
@@ -27,10 +25,10 @@ pipeline:
       - mkdir -p /var/www/html/reason-demo.tomas.website
       - cd /root/drone/src/github.com/horsekitlin/reason-react-demo
       - yarn install
-      - yarn build
+      - npm run webpack:production
       - cp -a build/* /var/www/html/reason-demo.tomas.website
       - cd /root
-      # - rm -rf /root/drone
+      - rm -rf /root/drone
     when:
       branch: master
 
